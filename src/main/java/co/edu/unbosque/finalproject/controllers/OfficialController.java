@@ -34,7 +34,7 @@ public class OfficialController {
         return officialRepository.findById(username).map(o -> {
             o.setEmail(official.getEmail());
             o.setName(official.getName());
-            return officialRepository.save(official);
+            return officialRepository.save(o);
         }).orElseThrow(() -> new OfficialNotFoundException(username));
     }
 

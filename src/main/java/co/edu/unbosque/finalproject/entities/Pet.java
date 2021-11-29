@@ -1,6 +1,9 @@
 package co.edu.unbosque.finalproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -42,7 +45,7 @@ public class Pet {
     private String picture;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "username", unique = true)
+    @JoinColumn(name = "owner_id", referencedColumnName = "username")
     private Owner owner;
 
     @JsonIgnore
@@ -54,4 +57,6 @@ public class Pet {
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Visit> visits;
+
+
 }

@@ -35,7 +35,7 @@ public class OwnerController {
             o.setName(owner.getName());
             o.setAddress(owner.getAddress());
             o.setNeighborhood(owner.getNeighborhood());
-            return ownerRepository.save(owner);
+            return ownerRepository.save(o);
         }).orElseThrow(() -> new OwnerNotFoundException(username));
     }
 

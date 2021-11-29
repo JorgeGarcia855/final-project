@@ -9,11 +9,10 @@ import co.edu.unbosque.finalproject.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users/owners/{username}/pets")
 public class PetController {
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
@@ -24,21 +23,21 @@ public class PetController {
         this.ownerRepository = ownerRepository;
     }
 
-    @GetMapping("/owners/{username}/pets")
+    @GetMapping
     public List<Pet> getPetsFromOwner(@PathVariable String username) {
-        return ownerRepository.getById(username).getPets();
+        return ownerRepository.findById(username).get().getPets();
     }
 
-    @PostMapping("/owners/{username}/pets")
-    public Pet addPetToOwner(@PathVariable String username, @Valid @RequestBody Pet pet) {
+    @PostMapping
+    public Pet addPetToOwner(@PathVariable String username, @RequestBody Pet pet) {
         return ownerRepository.findById(username).map(owner -> {
             pet.setOwner(owner);
             return petRepository.save(pet);
         }).orElseThrow(() -> new OwnerNotFoundException(username));
     }
 
-    @PutMapping("/owners/{username}/pets/{petId}")
-    public Pet updatePet(@PathVariable String username, @PathVariable Long petId, @Valid @RequestBody Pet pet) {
+    @PutMapping("/{petId}")
+    public Pet updatePet(@PathVariable String username, @PathVariable Long petId, @RequestBody Pet pet) {
         if (!ownerRepository.existsById(username)) throw new OwnerNotFoundException(username);
         return petRepository.findById(petId).map(p -> {
             p.setMicrochip(pet.getMicrochip());
@@ -48,7 +47,13 @@ public class PetController {
             p.setSize(pet.getSize());
             p.setSex(pet.getSex());
             p.setPicture(pet.getPicture());
-            return petRepository.save(pet);
+            return petRepository.save(p);
         }).orElseThrow(() -> new PetNotFoundException(petId));
+    }
+
+    @DeleteMapping("/{petId}")
+    public void deletePet(@PathVariable Long petId, @PathVariable String username) {
+        if (!ownerRepository.existsById(username)) throw new OwnerNotFoundException(username);
+        petRepository.deleteById(petId);
     }
 }
