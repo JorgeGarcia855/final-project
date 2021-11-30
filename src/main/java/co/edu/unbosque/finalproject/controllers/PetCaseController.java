@@ -16,13 +16,11 @@ import java.util.List;
 public class PetCaseController {
     private final PetCaseRepository petCaseRepository;
     private final PetRepository petRepository;
-    private final OwnerRepository ownerRepository;
 
     @Autowired
-    public PetCaseController(PetCaseRepository petCaseRepository, PetRepository petRepository, OwnerRepository ownerRepository) {
+    public PetCaseController(PetCaseRepository petCaseRepository, PetRepository petRepository) {
         this.petCaseRepository = petCaseRepository;
         this.petRepository = petRepository;
-        this.ownerRepository = ownerRepository;
     }
 
     @GetMapping
