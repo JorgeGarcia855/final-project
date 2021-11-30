@@ -15,6 +15,7 @@ public class VisitController {
     private final VisitRepository visitRepository;
     private final VetRepository vetRepository;
     private final PetRepository petRepository;
+
     @Autowired
     public VisitController(VisitRepository visitRepository, VetRepository vetRepository, PetRepository petRepository) {
         this.visitRepository = visitRepository;

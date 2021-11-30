@@ -1,5 +1,6 @@
 package co.edu.unbosque.finalproject.controllers;
 
+import co.edu.unbosque.finalproject.entities.Owner;
 import co.edu.unbosque.finalproject.entities.Pet;
 import co.edu.unbosque.finalproject.entities.PetCase;
 import co.edu.unbosque.finalproject.repositories.OwnerRepository;
@@ -25,8 +26,14 @@ public class PetCaseController {
     }
 
     @GetMapping
-    public List<PetCase> getPetCasesFromPets() {
+    public List<PetCase> getPetCases() {
         return petCaseRepository.findAll();
     }
 
+    @PostMapping("/{petId}")
+    public PetCase createPetcase(@RequestBody PetCase petCase, @PathVariable Long petId) {
+        Pet pet = petRepository.findById(petId).get();
+        petCase.setPet(pet);
+        return petCaseRepository.save(petCase);
+    }
 }
