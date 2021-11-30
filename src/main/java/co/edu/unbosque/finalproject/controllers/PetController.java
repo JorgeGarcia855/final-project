@@ -1,6 +1,5 @@
 package co.edu.unbosque.finalproject.controllers;
 
-import co.edu.unbosque.finalproject.entities.Owner;
 import co.edu.unbosque.finalproject.entities.Pet;
 import co.edu.unbosque.finalproject.exceptions.OwnerNotFoundException;
 import co.edu.unbosque.finalproject.exceptions.PetNotFoundException;
@@ -25,7 +24,7 @@ public class PetController {
 
     @GetMapping
     public List<Pet> getPetsFromOwner(@PathVariable String username) {
-        return ownerRepository.findById(username).get().getPets();
+        return ownerRepository.findById(username).orElseThrow(() -> new OwnerNotFoundException(username)).getPets();
     }
 
     @PostMapping
@@ -49,11 +48,5 @@ public class PetController {
             p.setPicture(pet.getPicture());
             return petRepository.save(p);
         }).orElseThrow(() -> new PetNotFoundException(petId));
-    }
-
-    @DeleteMapping("/{petId}")
-    public void deletePet(@PathVariable Long petId, @PathVariable String username) {
-        if (!ownerRepository.existsById(username)) throw new OwnerNotFoundException(username);
-        petRepository.deleteById(petId);
     }
 }

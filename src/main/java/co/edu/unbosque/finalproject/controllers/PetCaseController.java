@@ -1,9 +1,8 @@
 package co.edu.unbosque.finalproject.controllers;
 
-import co.edu.unbosque.finalproject.entities.Owner;
 import co.edu.unbosque.finalproject.entities.Pet;
 import co.edu.unbosque.finalproject.entities.PetCase;
-import co.edu.unbosque.finalproject.repositories.OwnerRepository;
+import co.edu.unbosque.finalproject.exceptions.PetNotFoundException;
 import co.edu.unbosque.finalproject.repositories.PetCaseRepository;
 import co.edu.unbosque.finalproject.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class PetCaseController {
 
     @PostMapping("/{petId}")
     public PetCase createPetcase(@RequestBody PetCase petCase, @PathVariable Long petId) {
-        Pet pet = petRepository.findById(petId).get();
+        Pet pet = petRepository.findById(petId).orElseThrow(() -> new PetNotFoundException(petId));
         petCase.setPet(pet);
         return petCaseRepository.save(petCase);
     }

@@ -3,6 +3,8 @@ package co.edu.unbosque.finalproject.controllers;
 import co.edu.unbosque.finalproject.entities.Pet;
 import co.edu.unbosque.finalproject.entities.Vet;
 import co.edu.unbosque.finalproject.entities.Visit;
+import co.edu.unbosque.finalproject.exceptions.PetNotFoundException;
+import co.edu.unbosque.finalproject.exceptions.VetNotFoundException;
 import co.edu.unbosque.finalproject.repositories.PetRepository;
 import co.edu.unbosque.finalproject.repositories.VetRepository;
 import co.edu.unbosque.finalproject.repositories.VisitRepository;
@@ -25,8 +27,8 @@ public class VisitController {
 
     @PostMapping("/{username}/{petId}")
     public Visit createVisit(@RequestBody Visit visit, @PathVariable Long petId, @PathVariable String username) {
-        Vet vet = vetRepository.findById(username).get();
-        Pet pet = petRepository.findById(petId).get();
+        Vet vet = vetRepository.findById(username).orElseThrow(() -> new VetNotFoundException(username));
+        Pet pet = petRepository.findById(petId).orElseThrow(() -> new PetNotFoundException(petId));
         visit.setVet(vet);
         visit.setPet(pet);
         return visitRepository.save(visit);
