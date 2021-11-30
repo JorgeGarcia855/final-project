@@ -9,6 +9,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -51,12 +52,12 @@ public class Pet {
     @JsonIgnore
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<PetCase> petCases;
+    private List<PetCase> petCases = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Visit> visits;
+    private List<Visit> visits = new ArrayList<>();
 
 
 }

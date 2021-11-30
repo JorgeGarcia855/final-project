@@ -26,7 +26,7 @@ public class Visit {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "vet_id", referencedColumnName = "username", unique = true)
+    @JoinColumn(name = "vet_id", referencedColumnName = "username")
     private Vet vet;
 
     @ManyToOne

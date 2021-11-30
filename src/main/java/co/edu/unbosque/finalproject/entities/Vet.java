@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,5 +29,5 @@ public class Vet extends UserApp {
     @OneToMany(mappedBy = "vet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
-    private List<Visit> visits;
+    private List<Visit> visits = new ArrayList<>();
 }

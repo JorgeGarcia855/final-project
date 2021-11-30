@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users/owners/{username}/pets/{petId}/petCases")
+@RequestMapping("/petCases")
 public class PetCaseController {
     private final PetCaseRepository petCaseRepository;
     private final PetRepository petRepository;
@@ -25,12 +25,8 @@ public class PetCaseController {
     }
 
     @GetMapping
-    public List<PetCase> getPetCasesFromPets(@PathVariable Long petId, @PathVariable String username) {
+    public List<PetCase> getPetCasesFromPets() {
         return petCaseRepository.findAll();
     }
-//
-//    @PostMapping
-//    public PetCase addPetCaseToPet(@PathVariable Long petId, @PathVariable String username, @RequestBody PetCase petCase, @RequestBody Pet pet) {
-//
-//    }
+
 }
