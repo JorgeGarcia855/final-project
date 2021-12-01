@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users/officials")
+@RequestMapping("api/officials")
 public class OfficialController {
     private final OfficialRepository officialRepository;
 

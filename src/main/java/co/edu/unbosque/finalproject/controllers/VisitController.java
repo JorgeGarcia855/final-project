@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/visits")
+@RequestMapping("/api/visits")
 public class VisitController {
     private final VisitRepository visitRepository;
     private final VetRepository vetRepository;

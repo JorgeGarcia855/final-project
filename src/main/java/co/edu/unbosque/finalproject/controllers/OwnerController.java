@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users/owners")
+@RequestMapping("api/owners")
 public class OwnerController {
     private final OwnerRepository ownerRepository;
 

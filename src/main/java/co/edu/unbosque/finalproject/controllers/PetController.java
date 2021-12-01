@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users/owners/{username}/pets")
+@RequestMapping("/api/owners/{username}/pets")
 public class PetController {
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
