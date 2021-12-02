@@ -25,7 +25,6 @@ public class Vet extends UserApp {
     @Column(nullable = false)
     private String neighborhood;
 
-
     @OneToMany(mappedBy = "vet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
