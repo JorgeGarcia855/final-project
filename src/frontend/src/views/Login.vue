@@ -21,6 +21,8 @@
       </div>
 
       <button v-on:click="getuserAxios()" class="btn btn-primary">Login</button>
+      <router-link to="/owner">Owner</router-link>
+      <router-link to="/vet">Vet</router-link>
     </form>
   </v-container>
 

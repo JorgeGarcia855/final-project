@@ -24,6 +24,8 @@ public class VetController {
         return vetRepository.findAll();
     }
 
+
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Vet createVet(@RequestBody Vet vet) {
         return vetRepository.save(vet);

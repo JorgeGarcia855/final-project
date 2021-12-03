@@ -39,7 +39,6 @@ public class PetController {
     public Pet updatePet(@PathVariable String username, @PathVariable Long petId, @RequestBody Pet pet) {
         if (!ownerRepository.existsById(username)) throw new OwnerNotFoundException(username);
         return petRepository.findById(petId).map(p -> {
-            p.setMicrochip(pet.getMicrochip());
             p.setName(pet.getName());
             p.setSpecies(pet.getSpecies());
             p.setRace(pet.getRace());

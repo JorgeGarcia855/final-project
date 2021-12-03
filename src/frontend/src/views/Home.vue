@@ -84,6 +84,25 @@ export default {
       password:"",
       name:"",
       address:"",
+      locations: [
+        "USAQUEN",
+        "CHAPINERO",
+        "SANTA FE",
+        "SAN CRISTOBAL",
+        "TUNJUELITO",
+        "USME",
+        "BOSA",
+        "KENNEDY",
+        "FONTIBON",
+        "ENGATIVA",
+        "SUBA",
+        "B. LOS MARTIRES",
+        "A. NARINO",
+        "P. ARANDA",
+        "R. URIBE",
+        "C. BOLIVAR",
+        "MUNICIPIOS ALEDATORIOS BOGOTA D.C.",
+      ],
       neighborhood:"",
       users:[]
     };
@@ -106,7 +125,7 @@ export default {
   },
   computed:{
     enableAddress(){
-      if(this.rolSelect.text=="Propietario" || this.rolSelect.text=="Veterinario"){
+      if(this.rolSelect.text==="Propietario" || this.rolSelect.text==="Veterinario"){
         return true
       }else return false
     }

@@ -11,6 +11,8 @@ import co.edu.unbosque.finalproject.repositories.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/visits")
 public class VisitController {
@@ -25,6 +27,10 @@ public class VisitController {
         this.petRepository = petRepository;
     }
 
+    @GetMapping
+    public List<Visit> getVisits() {
+        return visitRepository.findAll();
+    }
     @PostMapping("/{username}/{petId}")
     public Visit createVisit(@RequestBody Visit visit, @PathVariable Long petId, @PathVariable String username) {
         Vet vet = vetRepository.findById(username).orElseThrow(() -> new VetNotFoundException(username));
