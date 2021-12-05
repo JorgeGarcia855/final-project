@@ -12,15 +12,18 @@ import java.util.List;
 @RequestMapping("/api/pets")
 public class PetsController {
     private final PetRepository petRepository;
-    private final OwnerRepository ownerRepository;
 
-    public PetsController(PetRepository petRepository, OwnerRepository ownerRepository) {
+    public PetsController(PetRepository petRepository) {
         this.petRepository = petRepository;
-        this.ownerRepository = ownerRepository;
     }
 
     @GetMapping
     public List<Pet> getAllPets() {
         return petRepository.findAll();
+    }
+
+    @DeleteMapping("/{petId}")
+    public void deleteVisit(@PathVariable Long petId) {
+        petRepository.deleteById(petId);
     }
 }

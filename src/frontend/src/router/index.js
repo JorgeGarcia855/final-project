@@ -24,6 +24,16 @@ const routes = [
     path: '/vet',
     name: 'Vet',
     component: () => import('../views/Vet.vue')
+  },
+  {
+    path: '/official',
+    name: 'Official',
+    component: () => import('../views/Official.vue')
+  },
+  {
+    path: '/petCase',
+    name: 'PetCase',
+    component: () => import('../views/PetCase.vue')
   }
 ]
 

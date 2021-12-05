@@ -39,4 +39,9 @@ public class VisitController {
         visit.setPet(pet);
         return visitRepository.save(visit);
     }
+
+    @DeleteMapping("/{visitId}")
+    public void deleteVisit(@PathVariable Long visitId) {
+        visitRepository.deleteById(visitId);
+    }
 }
