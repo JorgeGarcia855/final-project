@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <h1>Propietario</h1>
       <v-data-table
           :headers="headers"
           :items="petsReform"

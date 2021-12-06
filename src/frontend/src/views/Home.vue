@@ -36,12 +36,12 @@
         />
       </div>
       <div v-show="enableAddress" class="form-group">
-        <label >Vecindario</label>
+        <label >Localidad</label>
         <input
             type="text"
             v-model="neighborhood"
             class="form-control"
-            placeholder="Vecindario"
+            placeholder="Localidad"
         />
       </div>
       <div class="form-group">

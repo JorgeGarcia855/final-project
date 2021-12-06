@@ -1,7 +1,12 @@
 <template>
   <v-app>
+    <h1>Veterinario</h1>
     <v-data-table :headers="headers" :items="visitsReform" class="elevation-1">
-
+      <template v-slot:top>
+        <v-toolbar flat>
+          <v-toolbar-title>Visitas</v-toolbar-title>
+        </v-toolbar>
+      </template>
     </v-data-table>
   </v-app>
 </template>

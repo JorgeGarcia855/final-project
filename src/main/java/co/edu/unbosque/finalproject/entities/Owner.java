@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Owner")
 @PrimaryKeyJoinColumn
 public class Owner extends UserApp {
     @Generated(GenerationTime.INSERT)

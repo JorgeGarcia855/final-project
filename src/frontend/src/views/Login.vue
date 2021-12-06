@@ -24,6 +24,7 @@
       <router-link to="/owner">Owner</router-link>
       <router-link to="/vet">Vet</router-link>
       <router-link to="/official">Official</router-link>
+      <router-link to="/petCase">Pet Case</router-link>
     </form>
   </v-container>
 

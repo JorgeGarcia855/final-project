@@ -54,7 +54,7 @@ public class Pet {
     @JsonIgnore
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Visit> visits = new ArrayList<>();
+    private List<Visit> visits;
 
 
 }

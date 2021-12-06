@@ -13,12 +13,12 @@ import javax.validation.constraints.Email;
 @Table(name = "UserApp")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class UserApp {
-    @Id @Column(nullable = false, updatable = false)
+    @Id @Column(nullable = false)
     private String username;
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private String password;
     @Column(nullable = false) @Email
     private String email;
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private String role;
 }

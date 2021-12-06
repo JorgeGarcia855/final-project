@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <h1>Funcionario</h1>
     <v-data-table :headers="ownerHeaders" :items="ownerReform" class="elevation-1">
       <template v-slot:top>
         <v-toolbar flat>

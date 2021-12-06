@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Vet")
 @PrimaryKeyJoinColumn
 public class Vet extends UserApp {
     @Column(nullable = false)
@@ -28,5 +29,5 @@ public class Vet extends UserApp {
     @OneToMany(mappedBy = "vet", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
-    private List<Visit> visits = new ArrayList<>();
+    private List<Visit> visits;
 }
